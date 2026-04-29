@@ -1,0 +1,32 @@
+# Sensitive config
+.env
+
+# Scraped data & outputs — may contain PII / proprietary review data
+data/
+
+# One-off / session-specific scripts
+apply_classifications.py
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.Python
+
+# Virtual environments
+venv/
+.venv/
+env/
+ENV/
+
+# macOS
+.DS_Store
+
+# Claude Code local config
+.claude/
+
+# IDE
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,19 @@
+You are analyzing app reviews for a fintech product.
+
+Your task:
+1. Assign a PRIMARY theme
+2. Assign a SUBTHEME
+3. Assign sentiment
+
+Rules:
+- Themes should be reusable buckets (e.g. Payments, UX, Bugs, KYC, Performance, Offers, Customer Support)
+- Subthemes should be specific (e.g. payment failure, slow loading, OTP issues)
+- Be consistent across reviews
+- Avoid too many unique themes
+
+Output format (JSON):
+{
+  "theme": "",
+  "subtheme": "",
+  "sentiment": ""
+}

@@ -1,0 +1,7 @@
+google-play-scraper
+pandas
+openpyxl
+python-dotenv
+requests
+tqdm
+anthropic
