@@ -59,13 +59,13 @@ source venv/bin/activate      # macOS/Linux
 pip install -r requirements.txt
 ```
 
-### 3. Configure the app and API key
+### 3. Configure the app
 
 ```bash
 cp .env.example .env
 ```
 
-Edit `.env`:
+Edit `.env` with your target app's details:
 
 ```env
 # Find APP_ID in the Play Store URL:
@@ -76,8 +76,10 @@ APP_LANG=en
 APP_COUNTRY=us
 REVIEW_COUNT=500
 
-ANTHROPIC_API_KEY=your_key_here
+ANTHROPIC_API_KEY=your_key_here   # see below — may not be needed
 ```
+
+See [.env.example](.env.example) for all available options.
 
 ---
 
@@ -87,13 +89,13 @@ ANTHROPIC_API_KEY=your_key_here
 python run_pipeline.py
 ```
 
-**Example — scraping a food delivery app:**
+**Example — scraping a solar energy app:**
 
 ```env
-APP_ID=com.ubereats
-APP_NAME=Uber Eats
+APP_ID=com.sse.consumer
+APP_NAME=SolarSquare
 APP_LANG=en
-APP_COUNTRY=us
+APP_COUNTRY=in
 REVIEW_COUNT=500
 ```
 
@@ -104,6 +106,30 @@ python -m src.scrape_reviews
 python -m src.analyze_reviews
 python -m src.aggregate
 ```
+
+---
+
+## Running Without an API Key (Claude Code users)
+
+If you're running this inside **Claude Code**, you don't need a separate `ANTHROPIC_API_KEY`. Claude can classify the reviews directly through the chat interface using its internal API access.
+
+**Step 1** — Scrape as normal:
+```bash
+python -m src.scrape_reviews
+```
+
+**Step 2** — Instead of calling the API, ask Claude in the chat:
+
+> *"Please read `data/raw_reviews.csv`, classify each review using the prompt in `prompts/classify_reviews.txt`, and write the results to `data/classified_reviews.csv` with columns: `theme`, `subtheme`, `sentiment`, `llm_raw_output`."*
+
+**Step 3** — Generate the Excel report:
+```bash
+python -m src.aggregate
+```
+
+This approach is ideal for one-off analyses or when you want to avoid API costs entirely.
+
+> **Tip:** The full project spec is in [Prompt.md](Prompt.md). You can paste it into any Claude Code session to rebuild this pipeline from scratch for a new app — no prior setup needed.
 
 ---
 
