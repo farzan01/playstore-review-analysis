@@ -92,8 +92,8 @@ python run_pipeline.py
 **Example — scraping a solar energy app:**
 
 ```env
-APP_ID=com.sse.consumer
-APP_NAME=SolarSquare
+APP_ID=in.startv.hotstar
+APP_NAME=JioHotstar
 APP_LANG=en
 APP_COUNTRY=in
 REVIEW_COUNT=500
